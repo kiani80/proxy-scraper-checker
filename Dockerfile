@@ -63,4 +63,4 @@ USER app
 
 ENTRYPOINT ["tini", "--"]
 
-CMD ["python", "-m", "proxy_scraper_checker"]
+#CMD ["python", "-m", "proxy_scraper_checker"]
