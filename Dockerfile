@@ -50,9 +50,12 @@ RUN pip install --no-index --find-links /wheels/ /wheels/* \
 
 
 # hadolint ignore=SC3028
-RUN groupadd --gid -1000 --system app \
-  && useradd --gid app --no-log-init --create-home --system --uid -1000 app \
-  && mkdir -p /home/app/.cache/proxy_scraper_checker \
+#RUN groupadd --gid -1000 --system app \
+#  && useradd --gid app --no-log-init --create-home --system --uid -1000 app \
+#  && mkdir -p /home/app/.cache/proxy_scraper_checker \
+#  && chown app:app /home/app/.cache/proxy_scraper_checker
+
+RUN mkdir -p /home/app/.cache/proxy_scraper_checker \
   && chown app:app /home/app/.cache/proxy_scraper_checker
 
 ENV IS_DOCKER=1
