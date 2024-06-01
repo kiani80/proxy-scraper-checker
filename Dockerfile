@@ -48,11 +48,10 @@ COPY --from=python-build-stage /usr/src/app/wheels /wheels/
 RUN pip install --no-index --find-links /wheels/ /wheels/* \
   && rm -rf /wheels/
 
-ARG GID UID
 
 # hadolint ignore=SC3028
-RUN groupadd --gid "${GID}" --system app \
-  && useradd --gid app --no-log-init --create-home --system --uid "${UID}" app \
+RUN groupadd --gid -1000 --system app \
+  && useradd --gid app --no-log-init --create-home --system --uid -1000 app \
   && mkdir -p /home/app/.cache/proxy_scraper_checker \
   && chown app:app /home/app/.cache/proxy_scraper_checker
 
